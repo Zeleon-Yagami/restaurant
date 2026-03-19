@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Services
+{% endblock title %}
+
+{% block content %}
+<!-- services section start -->
+<div class="services_section layout_padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <h1 class="services_taital" data-aos="fade-up" data-aos-duration="1000"> Our Services</h1>
+            <p class="services_text" data-aos="fade-up" data-aos-duration="1000">KNOWING OUR CUSTOMER NEEDS </p>
+            <p class="services_text" data-aos="fade-up" data-aos-duration="1000">We're more then just momos</p>
+            <p class="services_text" data-aos="fade-up" data-aos-duration="1000">We're a full-services dining
+               experience!</p>
+         </div>
+      </div>
+      <div class="services_section_2">
+         <div class="row">
+            <div class="col-lg-4 col-sm-12 col-md-4">
+               <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="house_icon">
+                     <img src="{% static 'images/high-quality.png' %}" class="image_1">
+                     <img src="{% static 'images/quality2.png' %}" class="image_2">
+                  </div>
+                  <h3 class="decorate_text">Quality Food</h3>
+                  <p class="tation_text">
+                     We believe in using only the highest quality ingredients to create momos that are bursting with
+                     flavor.
+                     Our fillings are prepared daily with fresh, vegetables and succulent meats.
+
+                  </p>
+                  <div class="readmore_bt"><a href="">Read More</a></div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-4">
+               <div class="box_main" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="house_icon">
+                     <img src="{% static 'images/party.png' %}" class="image_1">
+                     <img src="{% static 'images/party2.png' %}" class="image_2">
+                  </div>
+                  <h3 class="decorate_text">Private Party</h3>
+                  <p class="tation_text">
+                     Pair your momos with our selection of dipping sauces and chutneys for an unforgettable
+                     get-together.
+                     Let us help you create a fun and flavorful feast for your next celebration!
+                  </p>
+                  <div class="readmore_bt"><a href="">Read More</a></div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-4">
+               <div class="box_main" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="house_icon">
+                     <img src="{% static 'images/food-cover.png' %}" class="image_1">
+                     <img src="{% static 'images/catering2.png' %}" class="image_2">
+                  </div>
+                  <h3 class="decorate_text">Catering</h3>
+                  <p class="tation_text">
+                     Make your next gathering unforgettable with our momo catering service!
+                     We offer a variety of catering packages to suit any event size and budget as per need.
+                  </p>
+                  <div class="readmore_bt"><a href="">Read More</a></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- services section end -->
+
+
+
+
+<!-- footer section start -->
+<div class="footer_section layout_padding">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-3 col-sm-6">
+            <h3 class="useful_text">About</h3>
+            <p class="footer_text">We at <b style="font: bold;">MOMOS</b> are passionate about bringing you
+               the authentic taste of Nepal through our momos. Made with fresh, high-quality
+               ingredients and following traditional recipes,
+               our momos are bursting with flavor and sure to tantalize your taste buds. </p>
+         </div>
+         <div class="col-lg-3 col-sm-6">
+            <h3 class="useful_text"><b style="color: #f76d37;">M</b>OMOS</h3>
+            <div class="footer_menu">
+               <ul>
+                  <li><a href="">Home</a></li>
+                  <li><a href="">About Us</a></li>
+                  <li><a href="">Our Menu</a></li>
+                  <li><a href="">Our Services</a></li>
+                  <li><a href="">Contact Us</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="col-lg-3 col-sm-6">
+            <h3 class="useful_text">Legals</h3>
+            <div class="footer_menu">
+               <ul>
+                  <li><a href="#">Terms and conditions</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Policy</a></li>
+                  <li><a href="#">Support</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-sm-6">
+            <h1 class="useful_text">Contact Us</h1>
+            <div class="location_text">
+               <ul>
+                  <li>
+                     <a href="#">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address :
+                           Bedkot-6, Kanchanpur</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call :
+                           +977981348599</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email :
+                           deepak@gmail.com</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
