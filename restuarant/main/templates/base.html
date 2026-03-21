@@ -29,6 +29,7 @@
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/s.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
 
 </head>
 
@@ -46,16 +47,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link" href="{% url 'index_page' %}">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}
+                          activeHo
+                        {% endif %}" href="{% url 'index_page' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about_page' %}">About Us</a>
+                        <a class="nav-link {% if request.path == '/about/' %}
+                          activeHo
+                        {% endif %} " href="{% url 'about_page' %}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'menu_page' %}">Our Menu</a>
+                        <a class="nav-link {% if request.path == '/menu/' %}
+                          activeHo
+                        {% endif %} " href="{% url 'menu_page' %}">Our Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'services_page' %}">Our Services</a>
+                        <a class="nav-link {% if request.path == '/services/' %}
+                          activeHo
+                        {% endif %} " href="{% url 'services_page' %}">Our Services</a>
                     </li>
 
 
