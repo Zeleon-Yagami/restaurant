@@ -77,7 +77,49 @@
                     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
 
-                <a href=""><button class="custom-btn btn-1">Contact Us</button></a>
+                <a href="{% url 'contact_page' %}#helloDipak"><button class="custom-btn btn-1">Contact Us</button></a>
+
+
+                {% if request.user.is_authenticated %}
+                <!--============== Acoount-Sections =========================-->
+                <div class="account ms-3 me-3">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle py-2" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border: 1px solid white;">
+                            {{request.user.full_name}}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item active" href="{% url 'profile_page' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a></li>
+                            <li><a class="dropdown-item" href="{% url 'log_out' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--============== Acoount-Sections =========================-->
+                {% else %}
+                <!--============== Droopdown-Sections =========================-->
+                <div class="account ms-3">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle py-2" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border: 1px solid white;">
+                            Account
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item active" href="{% url 'log_in' %}">Login</a></li>
+                            <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--============== Dropdown-Sections =========================-->
+
+                {% endif %}
+
+
+
+
+
 
                 <!-- <form class="d-flex" role="search">
                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -142,13 +184,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="tel:+977981348599">
                                     <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call :
                                         +977981348599</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="mailto:deepak@gmail.com">
                                     <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email
                                         :
                                         deepak@gmail.com</span>
@@ -163,7 +205,7 @@
     <!-- copyright section start -->
     <div class="copyright_section">
         <div class="container">
-            <p class="copyright_text">2023 All Rights Reserved. Design by <a href="#">Deepak</a></p>
+            <p class="copyright_text">{{ct}} All Rights Reserved. Design by <a href="#">Deepak</a></p>
         </div>
     </div>
     <!-- copyright section end -->
@@ -191,6 +233,7 @@
         crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/b52396679f.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/hideMessage.js' %}"></script>
 
 </body>
 

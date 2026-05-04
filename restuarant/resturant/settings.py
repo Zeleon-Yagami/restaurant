@@ -15,15 +15,17 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from decouple import config
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-svh62a(!r#c9y7%p4sah+rvmus%nv4cik2rksxr2-iwr36v4+9'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 
 #============= default applist ====================
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +46,12 @@ INSTALLED_APPS = [
 #============= custom applist =====================
 EXTERNAL_APPS = [
     'main',
+    'phonenumber_field',
+    'authx',
+    'allauth', 
+    'allauth.account', 
+    'allauth.socialaccount', 
+    'social_django',
 ]
 
 #Now, add EXTERNAL_APP into INSTALLED_APPS
@@ -56,7 +65,31 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', 
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+LOGIN_URL="log_in"                   #log garney url         #name = 'log_in' walla
+LOGIN_REDIRECT_URL ="menu_page" 
+LOGOUT_URL="log_out" 
+LOGOUT_REDIRECT_URL ="log_in" 
+ 
+AUTHENTICATION_BACKENDS = [ 
+    'social_core.backends.google.GoogleOAuth2',  #for google 
+    'social_core.backends.github.GithubOAuth2',  #for github 
+    'django.contrib.auth.backends.ModelBackend'  
+    ] 
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/socialauth/complete/google-oauth2/' 
+SOCIAL_AUTH_URL_NAMESPACE = 'social' 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET') 
+
+
+#For github
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')  # Correct Client ID  
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET') # Correct Secret
+
 
 ROOT_URLCONF = 'resturant.urls'
 
@@ -70,6 +103,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.current_time.current_time_ho',             #AppName.fileName.functionName
             ],
         },
     },
@@ -81,12 +115,27 @@ WSGI_APPLICATION = 'resturant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASES = { 
+    "default": { 
+        "ENGINE": config("ENGINE"), 
+        "NAME": config("NAME"),        #database name which We created in pgAdmin 
+        "USER": config("USER"),             # Default PostgreSQL user 
+        "PASSWORD": config("PASSWORD"),     #postgreess database password 
+        "HOST": config("HOST"),            #localhost 
+        "PORT": config("PORT"),                 #postgress database port number[default] 
+    } 
 }
+
+#in terminal ==> pip install "pyscopg[binary]"
+
+AUTH_USER_MODEL = 'authx.CustomUser'          #appName.ModelName
 
 
 # Password validation
@@ -128,3 +177,19 @@ STATIC_URL = 'static/'
 #media configuration
 MEDIA_ROOT = BASE_DIR/'media'        #To store media files(images, audio, video, pdf, doc, etc)
 MEDIA_URL = '/media/'                #for accessing media files to browser
+
+
+
+# # Email setup in django
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')        #company ko email lehkney
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')        #password ==> but not real password
+
+
+# Session settings for OTP flow
+SESSION_COOKIE_AGE = 600  # 10 minutes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = False

@@ -1,3 +1,8 @@
 .nav-item .activeHo {
     border-bottom: 2px solid white !important;
 }
+
+.cateActive {
+    background-color: #fd7e14;
+
+}
