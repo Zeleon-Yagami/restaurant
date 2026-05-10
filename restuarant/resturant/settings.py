@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -115,23 +115,23 @@ WSGI_APPLICATION = 'resturant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES = { 
-    "default": { 
-        "ENGINE": config("ENGINE"), 
-        "NAME": config("NAME"),        #database name which We created in pgAdmin 
-        "USER": config("USER"),             # Default PostgreSQL user 
-        "PASSWORD": config("PASSWORD"),     #postgreess database password 
-        "HOST": config("HOST"),            #localhost 
-        "PORT": config("PORT"),                 #postgress database port number[default] 
-    } 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = { 
+#     "default": { 
+#         "ENGINE": config("ENGINE"), 
+#         "NAME": config("NAME"),        #database name which We created in pgAdmin 
+#         "USER": config("USER"),             # Default PostgreSQL user 
+#         "PASSWORD": config("PASSWORD"),     #postgreess database password 
+#         "HOST": config("HOST"),            #localhost 
+#         "PORT": config("PORT"),                 #postgress database port number[default] 
+#     } 
+# }
 
 #in terminal ==> pip install "pyscopg[binary]"
 
